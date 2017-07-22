@@ -7,7 +7,7 @@ class RepositoryStore extends EventEmitter {
   }
 
   getRepository() {
-    this.repositoryList;
+    return this.repositoryList;
   }
 
   updateRepositoryList(repositoryList) {

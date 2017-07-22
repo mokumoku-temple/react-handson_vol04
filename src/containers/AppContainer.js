@@ -11,6 +11,7 @@ export default class AppContainer extends React.Component {
     super(props);
     this.state = {
       searchText: '',
+      repositoryList: [],
     };
     this.onChangeValue = this.onChangeValue.bind(this);
     this.onSearch = this.onSearch.bind(this);
@@ -20,11 +21,30 @@ export default class AppContainer extends React.Component {
   value = '';
 
   componentDidMount() {
+    RepositoryStore.on('changed', () => {
+      this.setState({ repositoryList: RepositoryStore.getRepository() });
+    });
+  }
+
+  renderSearchResults(v) {
+    const el = (
+      <div key={v.id}>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href={v.html_url}
+        >
+          {v.name}
+        </a> ★{v.stargazers_count}
+      </div>
+    );
+    return el;
   }
 
   render() {
     const {
       searchText,
+      repositoryList
     } = this.state;
     return (
       <div className={styles.container}>
@@ -38,6 +58,9 @@ export default class AppContainer extends React.Component {
         {searchText &&
           <h2 className={styles['search-header']}>{searchText}の検索結果</h2>
         }
+        {repositoryList.map(v =>
+          this.renderSearchResults(v),
+        )}
       </div>
     );
   }
@@ -53,7 +76,6 @@ export default class AppContainer extends React.Component {
     });
     fetchRepository(text).then((res) => {
       RepositoryStore.updateRepositoryList(res);
-      console.log(res);
     });
   }
 
