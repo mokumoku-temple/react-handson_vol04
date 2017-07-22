@@ -9,7 +9,6 @@ export default class AppContainer extends React.Component {
     };
   }
 
-
   componentDidMount() {
   }
 

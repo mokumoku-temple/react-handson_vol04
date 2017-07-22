@@ -329,6 +329,8 @@ export default new RepositoryStore();
 
 ```
 
+更新されたStoreのデータをsetStateでViewに反映
+
 AppContainer.js
 
 ```js
@@ -377,7 +379,7 @@ export default class AppContainer extends React.Component {
 
 ```
 
-返ってきたデータを表示する
+更新されたデータを表示する
 ---
 
 AppContainer.js
