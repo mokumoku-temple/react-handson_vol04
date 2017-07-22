@@ -2,6 +2,14 @@ install
 ----
 
 ```sh
+  git clone git@github.com:mokumoku-temple/react-handson_vol04.git
+```
+
+```sh
+  cd react-handson_vol04
+```
+
+```sh
 npm install -g yarn & yarn install
 ```
 
@@ -48,6 +56,36 @@ export default class AppContainer extends React.Component {
 検索コンポーネントを作る
 ----
 
+src/components/Search.js
+
+```js
+// @flow
+import React from 'react';
+import styles from './styles/Search.css';
+
+type Props = {
+  value?: string;
+  onChangeValue: () => void;
+  onEnterSearch: () => void;
+};
+
+export const Search: FunctionalComponent<Props, *> = ({
+  value = '',
+  onChangeValue,
+  onEnterSearch,
+}) => (
+  <div className={styles.search}>
+    <input
+      size="45"
+      defaultValue={value}
+      onChange={onChangeValue}
+      onKeyUp={onEnterSearch}
+    />
+  </div>
+);
+
+```
+
 
 /containers/AppContainer.js
 
@@ -79,9 +117,6 @@ export default class AppContainer extends React.Component {
             onEnterSearch={this.onEnterSearch}
           />
         </div>
-        {searchText &&
-          <h2 className={styles['search-header']}>{searchText}の検索結果</h2>
-        }
       </div>
     );
   }
@@ -104,37 +139,6 @@ export default class AppContainer extends React.Component {
     }
   }
 }
-```
-
-
-src/components/Search.js
-
-```js
-// @flow
-import React from 'react';
-import styles from './styles/Search.css';
-
-type Props = {
-  value?: string;
-  onChangeValue: () => void;
-  onEnterSearch: () => void;
-};
-
-export const Search: FunctionalComponent<Props, *> = ({
-  value = '',
-  onChangeValue,
-  onEnterSearch,
-}) => (
-  <div className={styles.search}>
-    <input
-      size="45"
-      defaultValue={value}
-      onChange={onChangeValue}
-      onKeyUp={onEnterSearch}
-    />
-  </div>
-);
-
 ```
 
 検索ボタンを作る
