@@ -1,0 +1,140 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "flowtype"
+  ],
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "extends": [
+    "airbnb",
+    "plugin:flowtype/recommended"
+  ],
+  "settings": {
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": true
+    }
+  },
+  "rules": {
+    "class-methods-use-this": "off",
+    "eol-last": "error",
+    "no-bitwise": "off",
+    //"no-underscore-dangle": ["error", { "allowAfterThis": true }],
+    "import/no-extraneous-dependencies": ["error", {
+      "devDependencies": [
+        "webpack.config.js",
+        "webpack/*.js"
+      ]
+    }],
+    "import/prefer-default-export": "off",
+    "import/named": "error",
+    "react/jsx-filename-extension": "off",
+    "react/sort-comp": ["error", {
+      "order": [
+        "static",
+        "everything-else",
+        "lifecycle",
+        "rendering",
+        "handler"
+      ],
+      "groups": {
+        "static": [
+          "displayName",
+          "propTypes",
+          "contextTypes",
+          "childContextTypes",
+          "defaultProps"
+        ],
+        "lifecycle": [
+          "componentWillMount",
+          "componentDidMount",
+          "componentWillReceiveProps",
+          "shouldComponentUpdate",
+          "componentWillUpdate",
+          "componentDidUpdate",
+          "componentWillUnmount"
+        ],
+        "rendering": [
+          "/^render.+$/",
+          "render"
+        ],
+        "handler": [
+          "/^on.+$/"
+        ]
+      }
+    }],
+    "react/no-multi-comp": "off",
+    "flowtype/delimiter-dangle": ["error", "always-multiline"],
+    "flowtype/object-type-delimiter": ["error", "semicolon"],
+    "flowtype/require-parameter-type": [
+      "error",
+      {
+        "excludeArrowFunctions": "expressionsOnly"
+      }
+    ],
+    "flowtype/require-return-type": [
+      "error",
+      "always",
+      {
+        "excludeArrowFunctions": "expressionsOnly"
+      }
+    ],
+    "flowtype/require-variable-type": [
+      "error",
+      {
+       "excludeVariableTypes": {
+        "let": false,
+        "const": false,
+       }
+      }
+    ],
+    "flowtype/semi": "error",
+    "array-callback-return": "warn",
+    "max-len": ["warn", 100, 2, {
+      "ignoreUrls": true,
+      "ignoreComments": false,
+      "ignoreRegExpLiterals": true,
+      "ignoreStrings": true,
+      "ignoreTemplateLiterals": true
+    }],
+    "new-cap": ["warn", {
+      "newIsCap": true,
+      "newIsCapExceptions": [],
+      "capIsNew": false,
+      "capIsNewExceptions": ["Immutable.Map", "Immutable.Set", "Immutable.List"]
+    }],
+    "no-empty": "warn",
+    "no-lonely-if": "warn",
+    "no-mixed-operators": "off",
+    "no-param-reassign": ["warn", { "props": true }],
+    "no-underscore-dangle": ["warn", { "allowAfterThis": true }],
+    "no-void": "warn",
+    "import/no-duplicates": "warn",
+    "import/no-mutable-exports": "warn",
+    "import/no-named-as-default": "warn",
+
+    "react/forbid-prop-types": ["warn", { "forbid": ["any", "array", "object"] }],
+    "react/no-did-update-set-state": ["warn"],
+    "react/no-find-dom-node": "warn",
+    "react/no-string-refs": "warn",
+    "react/no-unused-prop-types": ["warn", {
+      "customValidators": [
+      ],
+      "skipShapeProps": true
+    }],
+    "react/prop-types": ["off", { "ignore": [], "customValidators": [] }],
+    "react/jsx-no-bind": ["warn", {
+      "ignoreRefs": true,
+      "allowArrowFunctions": true,
+      "allowBind": false
+    }],
+    "react/no-did-mount-set-state": ["warn"],
+    "react/no-array-index-key": "warn",
+    "react/require-default-props": "off",
+    "jsx-a11y/anchor-has-content": "warn",
+    "jsx-a11y/href-no-hash": "warn",
+    "jsx-a11y/img-has-alt": "warn",
+    "jsx-a11y/no-static-element-interactions": "warn"
+  }
+}

@@ -1,0 +1,9 @@
+.sort {
+  margin: 8px 0;
+  border-radius: 3px;
+  border-style: none;
+}
+
+.sort:disabled {
+  opacity: .2;
+}
