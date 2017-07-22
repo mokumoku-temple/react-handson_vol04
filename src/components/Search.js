@@ -7,7 +7,7 @@ type Props = {}
 export const Search: FunctionalComponent<Props, *> = ({
 
 }) => (
-  <div clasName={styles.search}>
+  <div className={styles.search}>
     <input
       size='45'
       defaultValue=''
