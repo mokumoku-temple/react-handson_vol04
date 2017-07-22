@@ -10,6 +10,8 @@ export default class AppContainer extends React.Component {
     this.state = {
     };
     this.onChangeValue = this.onChangeValue.bind(this);
+    this.onSearch = this.onSearch.bind(this);
+    this.onEnterSearch = this.onEnterSearch.bind(this);
   }
 
   value = '';
@@ -17,15 +19,16 @@ export default class AppContainer extends React.Component {
   componentDidMount() {
   }
 
-
-
   render() {
     return (
-      <div className={styles['search-box']}>
-        <Search
-          value={this.value}
-          onChangeValue={this.onChangeValue}
-        />
+      <div className={styles.container}>
+        <div className={styles['search-box']}>
+          <Search
+            value={this.value}
+            onChangeValue={this.onChangeValue}
+            onEnterSearch={this.onEnterSearch}
+          />
+        </div>
       </div>
     );
   }
@@ -33,4 +36,17 @@ export default class AppContainer extends React.Component {
   onChangeValue(e) {
     console.log('value', e.target.value);
   }
+
+  onSearch() {
+    console.log('検索された');
+  }
+
+  onEnterSearch(e) {
+    const self = this;
+    if (e.keyCode === 13) {
+      self.onSearch();
+    }
+  }
+
+
 }
